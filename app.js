@@ -45,7 +45,17 @@ router.get('/sharks', function(req,res){
 });
 
 router.get('/sharkslists', function(req,res){
-  res.sendFile(path + 'sharkslists.html');
+  //res.sendFile(path + 'sharkslists.html');
+  var query = "SELECT * FROM lists";
+  connection.query(query, function(error, data){
+     if(error){
+     	console.log(error)
+     }
+     else{
+     	console.log(data)
+        res.json(data)
+     }
+ });
 });
 
 app.use(express.static(path));

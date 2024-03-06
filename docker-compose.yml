@@ -1,0 +1,30 @@
+version: "3.0"
+services:
+  db:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Netpoleon#1
+      MYSQL_DATABASE: sharkslist
+    ports:
+      - '3306:3306'
+    volumes:
+      - sharkwow-mysql-data:/var/lib/mysql
+  app:
+    container_name: nodejsappgod
+    image: rurouniken89/nodejsappgod:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      restart_policy:
+        condition: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - 2681:8080
+volumes:
+  sharkwow-mysql-data:
+    driver: local
+
