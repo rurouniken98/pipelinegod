@@ -9,6 +9,10 @@ jobs:
     steps:    
       - name: Check out source code
         uses: actions/checkout@v3
+      - name: debug
+        uses: github/command@v1.1.0
+        with:
+          command: "pwd; ls -l"
       - name: Run ScanCentral SAST Scan
         uses: fortify/github-action/sc-sast-scan@v1
       - name: scanstarted  
