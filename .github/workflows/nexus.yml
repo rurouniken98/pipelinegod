@@ -12,6 +12,6 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v4
       - name: Running Nexus scan
-        run: docker run -v mycontent:/target -v myresults:/sonatype/reports sonatype/nexus-iq-cli -s https://nexusiq.nsth.net/ -a dhanyarak.k:Netpoleon#1 -i DK_PPLGod /target/package.json
+        run: docker run -v mycontent:/target -v myresults:/sonatype/reports sonatype/nexus-iq-cli /sonatype/evaluate -s https://nexusiq.nsth.net/ -a dhanyarak.k:Netpoleon#1 -i DK_PPLGod /target/package.json
      # - name: checked
        # run: 
