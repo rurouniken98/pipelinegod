@@ -30,6 +30,7 @@ jobs:
           # DO_EXPORT: true
           # TOOL_DEFINITIONS: https://ftfy.mycompany.com/tool-definitions/v1/tool-definitions.yaml.zip
   pullNexus:
+    needs: SAST
     runs-on: ubuntu-latest
     # runs-on: kencentrun
     # container: node:14
@@ -42,6 +43,7 @@ jobs:
         run: echo bruh
         #run: docker run -v /home/runner/work/pipelinegod/pipelinegod:/target -v /home/runner/work/pipelinegod/pipelinegod:/sonatype/reports sonatype/nexus-iq-cli /sonatype/evaluate -s https://nexusiq.nsth.net/ -a dhanyarak.k:Netpoleon#1 -i 1 /target/*.json
   Build_Images:
+    needs: [SAST, pullNexus]
     runs-on: kencentrun
     steps:
       - name : To_DockerfileDir
