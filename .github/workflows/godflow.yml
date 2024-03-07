@@ -45,7 +45,7 @@ jobs:
     runs-on: kencentrun
     steps:
       - name : To_DockerfileDir
-        run : cd /testpplgod/pipelinegod/
+        run : cd /home/admin/testpplgod/pipelinegod/
       - name : Deploy_images
         run : docker compose up -d --build --force-recreate
       - name : stall for MySQL up
