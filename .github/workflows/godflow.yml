@@ -29,3 +29,14 @@ jobs:
           # DO_WAIT: true
           # DO_EXPORT: true
           # TOOL_DEFINITIONS: https://ftfy.mycompany.com/tool-definitions/v1/tool-definitions.yaml.zip
+  pullNexus:
+    runs-on: ubuntu-latest
+    # runs-on: kencentrun
+    # container: node:14
+    steps:  
+      - name: Check out source code
+        uses: actions/checkout@v4
+      - name: pwd
+        run: pwd
+      - name: Running Nexus scan
+        run: docker run -v /home/runner/work/pipelinegod/pipelinegod:/target -v /home/runner/work/pipelinegod/pipelinegod:/sonatype/reports sonatype/nexus-iq-cli /sonatype/evaluate -s https://nexusiq.nsth.net/ -a dhanyarak.k:Netpoleon#1 -i 1 /target/*.json
