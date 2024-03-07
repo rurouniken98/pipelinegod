@@ -5,8 +5,9 @@ on:
   workflow_dispatch:
 jobs:
   SAST:
-    runs-on: kencentrun
-    container: node:14
+    runs-on: ubuntu-latest
+    # runs-on: kencentrun
+    # container: node:14
     steps:    
       - name: Check out source code
         uses: actions/checkout@v4
