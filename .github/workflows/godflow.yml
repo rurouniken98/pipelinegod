@@ -12,8 +12,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Run ScanCentral SAST Scan
         uses: fortify/github-action/sc-sast-scan@v1
-      - name: scanstarted  
-        run:  scancentral -url $SC_CONTROLLER_URL start $BUILD_OPTS $SCAN_OPTS -upload -application pplgod -version 1 -uptoken $SSC_UPLOAD_TOKEN -fprssc $SSC_APPVERSION-$BUILD_NO.fpr
+      # - name: scanstarted  
+        # run:  scancentral -url $SC_CONTROLLER_URL start $BUILD_OPTS $SCAN_OPTS -upload -application pplgod -version 1 -uptoken $SSC_UPLOAD_TOKEN -fprssc $SSC_APPVERSION-$BUILD_NO.fpr
         env:
           SC_CONTROLLER_URL: ${{ vars.SC_CONTROLLER_URL }} 
           SSC_URL: ${{secrets.SSC_URL}}
