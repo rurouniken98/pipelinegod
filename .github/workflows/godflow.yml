@@ -8,7 +8,7 @@ jobs:
     runs-on: kencentrun
     steps:    
       - name: Check out source code
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v3
       - name: Run ScanCentral SAST Scan
         uses: fortify/github-action/sc-sast-scan@v1
       - name: scanstarted  
