@@ -6,7 +6,7 @@ on:
 jobs:
   SAST:
     runs-on: kencentrun
-    container: node:14.16
+    container: node:14
     steps:    
       - name: Check out source code
         uses: actions/checkout@v3
