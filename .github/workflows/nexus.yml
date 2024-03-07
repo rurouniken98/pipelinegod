@@ -1,0 +1,15 @@
+name: nexusiq deploy
+on:
+  #push:
+    #branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  pullNexus:
+    runs-on: ubuntu-latest
+    # runs-on: kencentrun
+    # container: node:14
+    steps:  
+      - name: Check out source code
+        uses: actions/checkout@v4
+      - name: Running Nexus scan
+        run: docker ps -a
