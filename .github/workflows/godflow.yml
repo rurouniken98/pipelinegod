@@ -56,3 +56,26 @@ jobs:
           time: 20s
       - name: Full deploy
         run : docker compose up -d --build --force-recreate app
+  DAST_Scan :
+    needs: [SAST, pullNexus, Build_Images]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Unified token
+        run: | 
+          U_Tok=$(curl -X 'POST' --insecure 'https://dastcore.nsth.net/api/v2/auth' -H 'accept:text/plain' -H 'Content-Type:application/json-patch+json' -d '{"username":"dhanyarak.k", "password":"Netpoleon#1"}')
+          echo "Unified Token=$U_Tok" >> $GITHUB_ENV
+          echo U_TOK = $U_Tok
+          echo Cutting JSON
+          FFTOKEN=$(echo $U_Tok | grep -o '"token":"FORTIFYTOKEN [^"]\+' | cut -d '"' -f 4)
+          echo "Extracted Unified Token=$FFTOKEN" >> $GITHUB_ENV
+          echo "SCAN TOKEN =>   $FFTOKEN"
+          echo "STARTING SCANNING...   "
+          SCAN_RESP=$(curl -X 'POST' -s --insecure 'https://dastcore.nsth.net/api/v2/scans/start-scan-cicd' -H 'accept:text/plain' -H "Authorization:$FFTOKEN" -H 'Content-Type:application/json-patch+json' -d "{'cicdToken':'0443d8ea-729b-4431-bee0-177331ecafce','name':'PPLGod','scannerId':0,'useAssignedScannerOnly':true,'overrides':{'dataRetentionDays':0,'scanPriority':5,'scanMode':2}}")
+          echo "SCAN_RESP=$SCAN_RESP" >> $GITHUB_ENV
+          echo "SCAN RESPONSE =>   $SCAN_RESP"
+          echo "DONE!"
+          
+          
+          
+      
+      
