@@ -9,4 +9,6 @@ jobs:
         uses: actions/checkout@v4 
       - name: Build local images
         run: docker build -t rurouniken89/nodejsappgod .
+      - name: check images
+        run: docker images
       
