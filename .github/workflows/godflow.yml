@@ -40,8 +40,8 @@ jobs:
       - name: pwd
         run: pwd
       - name: Running Nexus scan
-       # run: echo bruh
-        run: docker run -v /home/runner/work/pipelinegod/pipelinegod:/target -v /home/runner/work/pipelinegod/pipelinegod:/sonatype/reports sonatype/nexus-iq-cli /sonatype/evaluate -s https://nexusiq.nsth.net/ -a dhanyarak.k:Netpoleon#1 -i 1 /target/*.json
+        run: echo bruh
+        #run: docker run -v /home/runner/work/pipelinegod/pipelinegod:/target -v /home/runner/work/pipelinegod/pipelinegod:/sonatype/reports sonatype/nexus-iq-cli /sonatype/evaluate -s https://nexusiq.nsth.net/ -a dhanyarak.k:Netpoleon#1 -i 1 /target/*.json
   Build_Images:
     needs: [SAST, pullNexus]
     runs-on: kencentrun
