@@ -12,9 +12,7 @@ jobs:
       - name: check images
         run: docker images
       - name: docker login
-        env:
-          AQUAREGISTRY_USER: sarunyu.r@netpoleons.com
-          AQUAREGISTRY_PASS: WWUdyu58$e
-          AQUASCANNER_USER: ken-scanner
-          AQUASCANNER_PASS: P@ssw0rd
-        run: 'script: echo ${AQUAREGISTRY_PASS} | docker login -u ${AQUAREGISTRY_USER} --password-stdin registry.aquasec.com'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
