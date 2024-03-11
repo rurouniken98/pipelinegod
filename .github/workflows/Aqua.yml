@@ -8,7 +8,9 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v4 
       - name: Build local images
-        run: docker build -t rurouniken89/nodejsappgod .
+        run: |
+          pwd
+          docker build -t rurouniken89/nodejsappgod .
       - name: check images
         run: docker images
       - name: docker login
