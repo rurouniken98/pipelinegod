@@ -23,5 +23,5 @@ jobs:
         run: docker pull registry.aquasec.com/scanner:2022.4
       - name: run scan images
         run: |
-          docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/tmp registry.aquasec.com/scanner:2022.4 scan -H https://aqua.nsth.net -U ken-scanner -P P@ssw0rd --local rurouniken89/nodejsappgod --jsonfile /tmp/result.json
+          docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /home/runner/work/pipelinegod/pipelinegod:/tmp registry.aquasec.com/scanner:2022.4 scan -H https://aqua.nsth.net -U ken-scanner -P P@ssw0rd --local rurouniken89/nodejsappgod --jsonfile /tmp/result.json
           cat /tmp/result.json
