@@ -1,0 +1,12 @@
+name: Aqua PPL
+on:
+  workflow_dispatch:
+jobs:
+  ImgScan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4 
+      - name: Build local images
+        run: docker build -t rurouniken89/nodejsappgod .
+      
