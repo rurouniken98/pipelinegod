@@ -1,0 +1,21 @@
+name: dep
+on:
+  #push:
+    #branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  Deploy_Images:
+    runs-on: kencentrun
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4
+      - name: pwd
+        run: pwd
+      - name : Deploy_images
+        run : docker compose up -d --build --force-recreate
+      - name : stall for MySQL up
+        uses: juliangruber/sleep-action@v2.0.0
+        with:
+          time: 20s
+      - name: Full deploy
+        run : docker compose up -d --build --force-recreate app
