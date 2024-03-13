@@ -8,12 +8,8 @@ jobs:
     runs-on: kencentrun
     container: node:14
     steps:
-      - name: Check out source code
-        uses: actions/checkout@v4
-      - name: pwd
-        run: |
-          pwd
-          ls
+      - name : To_DockerfileDir
+        run : cd /home/admin/testpplgod/pipelinegod/
       - name : Deploy_images
         run : docker compose up -d --build --force-recreate
       - name : stall for MySQL up
