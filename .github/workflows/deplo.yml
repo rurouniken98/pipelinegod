@@ -6,7 +6,6 @@ on:
 jobs:
   Deploy_Images:
     runs-on: kencentrun
-    container: node:14
     steps:
       - name : To_DockerfileDir
         run : cd /home/admin/testpplgod/pipelinegod/
