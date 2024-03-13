@@ -6,6 +6,7 @@ on:
 jobs:
   Deploy_Images:
     runs-on: kencentrun
+    container: node:14
     steps:
       - name: Check out source code
         uses: actions/checkout@v4
